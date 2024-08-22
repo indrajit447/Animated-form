@@ -1,0 +1,202 @@
+/* Body Styles with Two Background Images */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background-image: url("trees.png"), url("bg.jpg");
+    background-size: cover, cover;
+    background-repeat: no-repeat, no-repeat;
+    background-position: center center, center bottom; /* Ensure road alignment */
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Girl Cycling Animation */
+.girl-cycling {
+    position: absolute;
+    bottom: 35%; /* Higher from the ground */
+    left: 5%; /* Start from the left */
+    width: 250px; /* Adjust width */
+    height: auto; /* Maintain aspect ratio */
+    z-index: 1; /* Behind trees.png but above bg.jpg */
+    animation: cycleGirl 10s ease-in-out infinite;
+}
+
+
+
+
+/* Cycling Animation */
+@keyframes cycleGirl {
+    0% {
+        left: -200px; /* Start off the screen to the left */
+        transform: scaleX(-1); /* Facing right */
+    }
+    50% {
+        left: 100%; /* Move all the way to the right off the screen */
+        transform: scaleX(-1); /* Still facing right */
+    }
+    50.01% {
+        transform: scaleX(1); /* Flip to face left */
+    }
+    100% {
+        left: -200px; /* Move all the way to the left off the screen */
+        transform: scaleX(1); /* Still facing left */
+    }
+}
+
+/* Falling Leaves Animation */
+.leaf-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2; /* Above the girl, so she moves behind the leaves */
+}
+
+.leaf {
+    position: absolute;
+    width: 50px; /* Adjust leaf size */
+    height: auto; /* Maintain aspect ratio */
+    background-size: cover;
+    animation: fall 10s linear infinite, sway 2s ease-in-out infinite alternate, rotate 2s infinite;
+}
+
+/* Falling Animation */
+@keyframes fall {
+    0% {
+        top: -100px; /* Start leaves off the screen */
+    }
+    100% {
+        top: 100vh; /* Ensure leaves fall completely off the screen */
+    }
+}
+
+/* Horizontal Swaying Animation */
+@keyframes sway {
+    0% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(20px); /* Sway slightly to the right */
+    }
+    100% {
+        transform: translateX(-20px); /* Sway slightly to the left */
+    }
+}
+
+/* Rotation Animation for 180-degree rotation */
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(180deg); /* Rotate 180 degrees clockwise */
+    }
+    100% {
+        transform: rotate(0deg); /* Rotate back 180 degrees counterclockwise */
+    }
+}
+
+/* Custom Animation Timings for Leaves */
+.leaf:nth-child(1) {
+    left: 10%;
+    animation-duration: 10s, 3s, 4s; /* Adjust the timing of the rotate animation */
+}
+
+.leaf:nth-child(2) {
+    left: 30%;
+    animation-duration: 12s, 4s, 4.5s;
+}
+
+.leaf:nth-child(3) {
+    left: 50%;
+    animation-duration: 14s, 3s, 5s;
+}
+
+.leaf:nth-child(4) {
+    left: 70%;
+    animation-duration: 11s, 5s, 4.2s;
+}
+
+/* Container */
+.container {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    max-width: 400px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    z-index: 3; /* Ensure the form is on top */
+}
+
+/* Form Container */
+.form-container {
+    background-color: transparent;
+    padding: 12px;
+    border-radius: 10px;
+    box-shadow: none;
+    text-align: center;
+    max-width: 320px;
+    width: 100%;
+}
+
+/* Input Field */
+.input-field {
+    margin-bottom: 15px;
+}
+
+.input-field input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* Button */
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Links: Flexbox for Alignment */
+.link-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.left-link {
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+.right-link {
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
